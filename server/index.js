@@ -8,7 +8,7 @@ app.use(cors())
 
 const axios = require('axios');
 
-const dbFileUrl = 'https://raw.githubusercontent.com/BassemHazemDev/CURD/master/shopping.sql';
+const dbFileUrl = 'https://raw.githubusercontent.com/BassemHazemDev/CURD/shopping.sql';
 axios.get(dbFileUrl)
   .then(response => {
     const dbFileContent = response.data;
