@@ -8,7 +8,7 @@ app.use(cors())
 
 
 const query = mysql2.createConnection({
-    host: 'http://127.0.0.1/phpmyadmin/index.php?route=/database/structure&db=shopping',
+    host: 'https://github.com/BassemHazemDev/CURD/blob/main/shopping.sql',
     user: 'root',
     password: '',
     database: 'shopping'
