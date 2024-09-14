@@ -6,24 +6,6 @@ const cors = require("cors")
 app.use(express.json())
 app.use(cors())
 
-const axios = require('axios');
-
-const dbFileUrl = 'https://bassemhazemdev.github.io/CURD/clinet/shooping.sql';
-axios.get(dbFileUrl)
-  .then(response => {
-    const dbFileContent = response.data;
-    // Use the database file content to create the database schema
-    query.execute(dbFileContent, (err, data) => {
-      if (err) {
-        console.error(err);
-      } else {
-        console.log('Database schema created successfully!');
-      }
-    });
-  })
-  .catch(error => {
-    console.error(error);
-  });
 
 const query = mysql2.createConnection({
     host: 'localhost',
