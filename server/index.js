@@ -8,7 +8,7 @@ app.use(cors())
 
 
 const query = mysql2.createConnection({
-    host: '127.0.0.1',  // Localhost IP
+    host: 'localhost',  // Localhost IP
     port: 3306,         // Default MySQL port
     user: 'root',
     password: '',
