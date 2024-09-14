@@ -8,7 +8,7 @@ app.use(cors())
 
 
 const query = mysql2.createConnection({
-    host: 'https://github.com/BassemHazemDev/CURD/blob/main/shopping.sql',
+    host: 'localhost',
     user: 'root',
     password: '',
     database: 'shopping'
