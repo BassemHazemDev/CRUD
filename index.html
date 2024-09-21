@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="clinet/CSS/bootstrap.min.css">
+    <link rel="stylesheet" href="clinet/CSS/all.min.css">
+</head>
+
+<body class="bg-dark text-white">
+    <div class="container text-center p-5">
+        <h2>CURD project documentation</h2>
+        <h5 class="pt-2">here is a video for the project</h5>
+        <video src="CURD vid.mp4" class="w-75 pb-2 pt-2" autoplay></video>
+        <div class="info d-flex flex-column align-items-center">
+            <p class="text-decoration-none rounded fw-bold fs-5 w-50">By Eng.Bassem Hazem Mahmoud</p>
+            <div class="info d-flex">
+                <a href="https://github.com/BassemHazemDev" rel="noopener" target="_blank" class="text-decoration-none text-bg-success rounded fw-bold fs-5 mx-5">Github</a>
+                <a href="https://www.linkedin.com/in/bassem-hazem-7902b32a2/" rel="noopener" target="_blank" class="text-decoration-none text-bg-primary rounded fw-bold fs-5 mx-5">Linkedin</a>    
+            </div>
+       </div>
+    </div>
+    <div class="container text-start p-2 w-75">
+        <h4 class="fw-medium">Overview</h4>
+        <p class="fw-medium">
+            This is a simple Product Management System "CURD operations": (Create, Read, Update, Delete) project with
+            MySQL database , frist integration with the Front-end and
+            Back-end the skills used are :
+        </p>
+        <p class="text-info">
+            HTML , CSS , Bootstrap , JS , Jquery , Regex validation -> for the FE (client) section
+        </p>
+        <p class="text-success">
+            Node.js , MySQL , express , basics api -> for the BE (server) section
+        </p>
+
+        <hr>
+
+        <h4 class="fw-medium">Details</h4>
+
+        <h5 class="fw-medium text-success">API Endpoints:</h5>
+        <p>
+            <span class="text-info">[GET] /</span>
+        <pre>
+            {
+            "message": "done",
+            "data": [...]
+            }  
+        </pre>
+        </p>
+
+        <p>
+           <span class="text-info">[POST] /products</span> 
+            <li>Request Body:</li>
+        <pre class="text-danger">
+        {
+            "name": "Product Name",
+            "price": 999.99,
+            "description": "Product Description"
+        }
+        </pre>
+            <li>Response:</li>
+        <pre class="text-danger">
+        {
+            "message": "done"
+        }                  
+        </pre>
+        </p>
+
+        <p>
+           <span class="text-info">[PUT] /products</span> 
+            <li>Request Body:</li>
+        <pre class="text-danger">
+        {
+            "id": 1,
+            "name": "Updated Product",
+            "price": 999.99,
+            "description": "Updated Description"
+        }      
+        </pre>
+            <li>Response:</li>
+        <pre class="text-danger">
+        {
+            "message": "done"
+        }                  
+        </pre>
+        </p>
+
+        <p>
+        <span class="text-info">[DELETE] /products</span>
+            <li>Request Body:</li>
+        <pre class="text-danger">
+        {
+            "id": 1
+        }  
+        </pre>
+            <li>Response:</li>
+        <pre class="text-danger">
+        {
+            "message": "done"
+        }                  
+        </pre>
+        </p>
+
+        <p>
+           <span class="text-info">[GET] /products/:id</span> 
+            <li>Response:</li>
+            <pre class="text-danger">
+        {
+            "message": "done",
+            "data": [...]
+        }                 
+            </pre>
+        </p>
+
+
+        <h5 class="fw-medium text-success">Front-End Features:</h5>
+        <p>
+            The front-end uses Bootstrap for styling and jQuery for making API requests to the backend. Key features
+            include:
+        </p>
+        <ul>
+            <li>Add Product: A form where users can input product details (name, price, description) and add it to the
+                system.</li>
+            <li>Search Functionality: Users can search for products by name, description, or price.</li>
+            <li>Update Product: Users can click an "Update" button to modify an existing product.</li>
+            <li>Delete Product: Users can delete products with the "Delete" button.</li>
+            <li>Real-Time Updates: The product list is updated in real-time after adding, updating, or deleting a
+                product.</li>
+        </ul>
+
+        <h5 class="fw-medium text-success">Main Functions:</h5>
+        <ul>
+            <li>addProduct(): Handles adding new products to the database.</li>
+            <li>deleteProduct(id): Deletes a product based on the provided id</li>
+            <li>updateProduct(id): Prefills the form with the product details for updating.</li>
+            <li>fetchData(): Fetches and displays all products from the database.</li>
+            <li>searchProduct(): Filters the product list based on the user's search input.</li>
+        </ul>
+
+        <h5 class="fw-medium text-success">Database Schema:</h5>
+        <ul>
+            <li>id [INT] Primary key, auto-incremented</li>
+            <li>name [VARCHAR(50)] Name of the product</li>
+            <li>price [decimal(10,0)] Price of the product</li>
+            <li>description [varchar(150)] Product description</li>
+        </ul>
+        <h5 class="fw-medium text-success">Validation:</h5>
+        <ul>
+            <li>Product name: Start with upper-case min(3) max(10)
+                <span class="text-danger">[validateProductName()]</span>
+            </li>
+            <li>Product price: 5 digits number
+                <span class="text-danger">[validateProductPrice()]</span>
+            </li>
+            <li>Product description: 200 characters max
+                <span class="text-danger">[validateProductDesc()]</span>
+            </li>
+        </ul>
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <script src="clinet/Js/bootstrap.min.js"></script>
+</body>
+
+</html>

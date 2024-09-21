@@ -1,8 +1,8 @@
-const e = require('express')
-const express = require('express')
+import express from 'express'
+import mysql2 from 'mysql2'
+import cors  from 'cors'
+
 const app = express()
-const mysql2 = require('mysql2')
-const cors = require("cors")
 app.use(express.json())
 app.use(cors())
 
