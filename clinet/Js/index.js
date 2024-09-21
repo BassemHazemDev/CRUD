@@ -1,19 +1,26 @@
-var productList = []
-var currentId
+let productList = []
+let currentId
+let productName = $("#productName")
+let productPrice = $("#productPrice")
+let productDesc = $("#productDesc")
+let searchInput = $("#searchInput")
+let mainBtn = $("#mainBtn")
+let updateBtn = $("#updateBtn")
+let PNP = $("#PNP")
+let PPP = $("#PPP")
+let PDP = $("#PDP")
+let tableData = $("#tableData")
 
 function wlcomeAlert() {
     alert(`Welcome to the Product Management System 
 
         Please follow this constrains while adding product:
 
-        - Prouduct name: Start with upper-case min(3) max(10)
-        - Prouduct price: 4 digits number
-        - Prouduct description: 200 characters max
+        - Product name: Start with upper-case min(3) max(10)
+        - Product price: 5 digits number
+        - Product description: 200 characters max
         `)
 }
-
-wlcomeAlert()
-
 function fetchData() {
     $.ajax({
         type: "GET",
@@ -26,6 +33,7 @@ function fetchData() {
     })
 }
 
+wlcomeAlert()
 fetchData()
 
 function display(productList) {
@@ -43,30 +51,30 @@ function display(productList) {
             </td>
         </tr>`
     }
-    $("#tableData").html(cartona)
+    tableData.html(cartona)
 }
 
 function addProduct() {
     alertRemove()
     if (validateProductName() && validateProductPrice() && validateProductDesc()) {
         let product = {
-            name: $("#prouductName").val(),
-            price: $("#prouductPrice").val(),
-            description: $("#prouductDesc").val()
+            name: productName.val(),
+            price: productPrice.val(),
+            description: productDesc.val()
         }
         fetchAPI('POST', 'products', product)
         clearInput()
     } else {
-        if (!validateProductName()) $("#PNP").removeClass("d-none");
-        else if (!validateProductPrice()) $("#PPP").removeClass("d-none");
-        else if (!validateProductDesc()) $("#PDP").removeClass("d-none");
+        if (!validateProductName()) PNP.removeClass("d-none");
+        else if (!validateProductPrice()) PPP.removeClass("d-none");
+        else if (!validateProductDesc()) PDP.removeClass("d-none");
     }
 }
 
 function alertRemove() {
-    $("#PNP").addClass("d-none");
-    $("#PPP").addClass("d-none");
-    $("#PDP").addClass("d-none")
+    PNP.addClass("d-none");
+    PPP.addClass("d-none");
+    PDP.addClass("d-none")
 }
 
 function fetchAPI(method, endPoint, data) {
@@ -82,7 +90,7 @@ function fetchAPI(method, endPoint, data) {
 }
 
 function searchProduct() {
-    let item = $("#searchInput").val().toLowerCase();
+    let item = searchInput.val().toLowerCase();
     let filteredProducts = productList.filter(product => {
         return (
             product.name.toLowerCase().includes(item) ||
@@ -100,35 +108,35 @@ function deleteProduct(id) {
 function updateProduct(id) {
     currentId = id
     let current = productList.filter(ele => ele.id == id)[0]
-    $("#prouductName").val(current.name)
-    $("#prouductPrice").val(current.price)
-    $("#prouductDesc").val(current.description)
-    $("#mainBtn").addClass('d-none')
-    $("#updateBtn").removeClass('d-none')
+    productName.val(current.name)
+    productPrice.val(current.price)
+    productDesc.val(current.description)
+    mainBtn.addClass('d-none')
+    updateBtn.removeClass('d-none')
 }
 
 function callUpdate() {
     let product = {
-        name: $("#prouductName").val(),
-        price: $("#prouductPrice").val(),
-        description: $("#prouductDesc").val(),
+        name: productName.val(),
+        price: productPrice.val(),
+        description: productDesc.val(),
         id: currentId
     }
     fetchAPI('PUT', 'products', product)
-    $("#mainBtn").removeClass('d-none')
-    $("#updateBtn").addClass('d-none')
+    mainBtn.removeClass('d-none')
+    updateBtn.addClass('d-none')
     clearInput()
 }
 
 function clearInput() {
-    $("#prouductName").val("")
-    $("#prouductPrice").val("")
-    $("#prouductDesc").val("")
+    productName.val("")
+    productPrice.val("")
+    productDesc.val("")
 }
 
 function validateProductName() {
     var regex = /^[A-Z][a-z]{2,10}$/;
-    if (regex.test($("#prouductName").val())) {
+    if (regex.test(productName.val())) {
         return true;
     } else {
         return false;
@@ -136,8 +144,8 @@ function validateProductName() {
 }
 
 function validateProductPrice() {
-    var regex = /^(([1-9][0-9][0-9][0-9])|10000)$/;
-    if (regex.test($("#prouductPrice").val())) {
+    var regex = /^(([1-9][0-9][0-9][0-9][0-9])|100000)$/;
+    if (regex.test(productPrice.val())) {
         return true;
     } else {
         return false;
@@ -146,7 +154,7 @@ function validateProductPrice() {
 
 function validateProductDesc() {
     var regex = /.{0,200}/;
-    if (regex.test($("#prouductDesc").val())) {
+    if (regex.test(productDesc.val())) {
         return true;
     } else {
         return false;
